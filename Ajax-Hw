@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ajax Homework</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    button { padding: 10px 20px; margin-top: 10px; }
+    #message { margin-top: 20px; color: purple; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<h1>Ajax Homework</h1>
+<p>按下按鈕，從 data.json 讀取訊息：</p>
+
+<button id="loadMessage">Load Message</button>
+<div id="message"></div>
+
+<script>
+  $(document).ready(function() {
+    $("#loadMessage").click(function() {
+      $.get("data.json", function(data) {
+        $("#message").text(data.message);
+      }).fail(function() {
+        $("#message").text("讀取失敗！");
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
